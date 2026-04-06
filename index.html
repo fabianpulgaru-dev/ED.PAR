@@ -213,7 +213,8 @@ tr:hover td { background: var(--pl); }
 <script>
 var students = []; // [{id, name, file, text, status, report}]
 var currentId = null;
-var API_URL = 'https://api.anthropic.com/v1/messages';
+var API_URL = 'https://api.anthropic.com/v1/messages'
+var ANTHROPIC_KEY = 'sk-ant-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';
 
 // ── CRITERIOS ────────────────────────────────────────────────
 var CRITERIOS = {
@@ -400,7 +401,9 @@ async function llamarAPI(student) {
       'Content-Type': 'application/json',
       'anthropic-version': '2023-06-01',
       'anthropic-dangerous-direct-browser-access': 'true'
-    },
+      'x-api-key': ANTHROPIC_KEY
+},
+
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 2500,
